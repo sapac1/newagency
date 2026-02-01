@@ -59,7 +59,7 @@
             display: flex; 
             align-items: center; 
             padding: 0 5%; 
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1500&q=80') center/cover; 
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1445205170230-053b830c6039?auto=format&fit=crop&w=1500&q=80') center/cover; 
             color: white; 
         }
         .hero-h { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; }
@@ -76,8 +76,7 @@
         }
 
         .product-card {
-            background: var(--white);
-            padding-bottom: 20px;
+            background: transparent;
             position: relative;
             transition: var(--transition);
         }
@@ -85,22 +84,22 @@
         .img-wrapper {
             aspect-ratio: 3/4;
             overflow: hidden;
-            margin-bottom: 15px;
-            position: relative;
+            margin-bottom: 20px;
+            background-color: #f0f0f0;
         }
 
         .img-wrapper img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.8s ease;
         }
 
-        .product-card:hover img { transform: scale(1.08); }
+        .product-card:hover img { transform: scale(1.1); }
 
-        .product-info { padding: 0 15px; text-align: center; }
-        .product-info h3 { font-size: 1.1rem; margin-bottom: 5px; }
-        .price { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+        .product-info { text-align: left; }
+        .product-info h3 { font-size: 1rem; margin-bottom: 5px; letter-spacing: 0.5px; }
+        .price { color: var(--accent); font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 10px; }
 
         .add-btn {
             width: 100%;
@@ -108,36 +107,37 @@
             color: white;
             border: none;
             padding: 12px;
-            margin-top: 15px;
             cursor: pointer;
             text-transform: uppercase;
             font-size: 0.7rem;
-            letter-spacing: 1px;
+            letter-spacing: 2px;
             transition: 0.3s;
         }
 
         .add-btn:hover { background: var(--accent); }
 
-        /* --- Dynamic Page Wrapper --- */
+        /* --- Content Wrapper (Policy/Contact Pages) --- */
         .content-wrapper {
-            max-width: 800px;
+            max-width: 850px;
             margin: 60px auto;
             padding: 0 5%;
-            animation: fadeIn 0.5s ease;
+            animation: fadeIn 0.6s ease-out;
         }
-
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        .content-wrapper h1 { font-size: 3rem; margin-bottom: 40px; }
+        .content-wrapper h2 { margin: 30px 0 15px; font-size: 1.4rem; color: var(--accent); }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- Footer --- */
         footer { background: var(--primary); color: var(--white); padding: 80px 5% 40px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .footer-grid h4 { color: var(--accent); margin-bottom: 20px; text-transform: uppercase; font-size: 0.8rem; }
-        .footer-grid a { color: #aaa; text-decoration: none; font-size: 0.8rem; display: block; margin-bottom: 10px; cursor: pointer; }
+        .footer-grid h4 { color: var(--accent); margin-bottom: 20px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .footer-grid a { color: #888; text-decoration: none; font-size: 0.8rem; display: block; margin-bottom: 12px; cursor: pointer; transition: 0.3s; }
         .footer-grid a:hover { color: white; }
 
         @media (max-width: 768px) {
-            .hero-h { font-size: 2.5rem; }
-            nav { display: none; } /* Simplified for mobile */
+            .hero-h { font-size: 2.8rem; }
+            .content-wrapper h1 { font-size: 2.2rem; }
+            nav { display: none; }
         }
     </style>
 </head>
@@ -151,21 +151,20 @@
         </nav>
     </header>
 
-    <main id="main-view">
-        </main>
+    <main id="main-view"></main>
 
     <footer>
         <div class="footer-grid">
             <div>
-                <h4>Contact</h4>
-                <p style="font-size: 0.8rem; color: #888;">
+                <h4>Aura HQ</h4>
+                <p style="font-size: 0.8rem; color: #666; line-height: 1.8;">
                     123 Fashion District, Suite 400<br>
                     New York, NY 10001<br>
                     support@aurafashion.com
                 </p>
             </div>
             <div>
-                <h4>Policy</h4>
+                <h4>Legal Info</h4>
                 <ul>
                     <li><a onclick="navigateTo('terms')">Terms of Service</a></li>
                     <li><a onclick="navigateTo('privacy')">Privacy Policy</a></li>
@@ -176,33 +175,35 @@
                 <h4>Support</h4>
                 <ul>
                     <li><a onclick="navigateTo('refund')">Refund Policy</a></li>
-                    <li><a onclick="navigateTo('contact')">Get Help</a></li>
+                    <li><a onclick="navigateTo('contact')">Contact Us</a></li>
                 </ul>
             </div>
         </div>
-        <p style="margin-top: 50px; font-size: 0.7rem; color: #444;">&copy; 2026 AURA MODERN APPAREL. AUTHENTIC QUALITY GUARANTEED.</p>
+        <p style="margin-top: 60px; font-size: 0.7rem; color: #444; border-top: 1px solid #222; padding-top: 20px;">
+            &copy; 2026 AURA MODERN APPAREL. TRUSTED BY GOOGLE ADS COMPLIANCE STANDARDS.
+        </p>
     </footer>
 
     <script>
         const products = [
-            { id: 1, name: "Essential White Tee", price: 29.00, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=500&q=80" },
-            { id: 2, name: "Navy Knit Sweater", price: 59.00, img: "https://images.unsplash.com/photo-1556905055-8f358a7a4bb4?auto=format&fit=crop&w=500&q=80" },
-            { id: 3, name: "Classic Denim Jacket", price: 89.00, img: "https://images.unsplash.com/photo-1576871333019-220ea01e8f27?auto=format&fit=crop&w=500&q=80" },
-            { id: 4, name: "Modern Chino Pants", price: 45.00, img: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=500&q=80" },
-            { id: 5, name: "Wool Blend Coat", price: 129.00, img: "https://images.unsplash.com/photo-1539533318441-601966636787?auto=format&fit=crop&w=500&q=80" },
-            { id: 6, name: "Urban Canvas Pack", price: 49.00, img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=80" },
-            { id: 7, name: "Leather Chelsea Boots", price: 110.00, img: "https://images.unsplash.com/photo-1638247025967-b4e38f787b76?auto=format&fit=crop&w=500&q=80" },
-            { id: 8, name: "Minimalist Watch", price: 75.00, img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80" }
+            { id: 1, name: "Silk Blend Blouse", price: 115.00, img: "https://images.unsplash.com/photo-1534126416832-a88fdf2911c2?auto=format&fit=crop&w=600&q=80" },
+            { id: 2, name: "Oversized Cashmere Polo", price: 195.00, img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80" },
+            { id: 3, name: "Tailored Linen Trousers", price: 145.00, img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=600&q=80" },
+            { id: 4, name: "Ribbed Wool Vest", price: 85.00, img: "https://images.unsplash.com/photo-1624373914860-3f7a43588a64?auto=format&fit=crop&w=600&q=80" },
+            { id: 5, name: "Brushed Cotton Overcoat", price: 340.00, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80" },
+            { id: 6, name: "Raw Leather Satchel", price: 210.00, img: "https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=600&q=80" },
+            { id: 7, name: "Minimalist Knit Dress", price: 160.00, img: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80" },
+            { id: 8, name: "Brushed Suede Loafers", price: 225.00, img: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=600&q=80" }
         ];
 
         const pages = {
             home: `
                 <section class="hero">
-                    <h1 class="hero-h">Crafted for<br><i>Longevity.</i></h1>
+                    <h1 class="hero-h">Designed for<br><i>The Individual.</i></h1>
                 </section>
                 <div class="collection-header">
-                    <h2>Our Essentials</h2>
-                    <p style="color: #888; font-size: 0.9rem;">Modern basics for a refined wardrobe.</p>
+                    <h2>Current Collection</h2>
+                    <p style="color: #888; font-size: 0.9rem;">Refined silhouettes for the modern wardrobe.</p>
                 </div>
                 <div class="product-grid">
                     ${products.map(p => `
@@ -213,16 +214,16 @@
                             <div class="product-info">
                                 <h3>${p.name}</h3>
                                 <span class="price">$${p.price.toFixed(2)}</span>
-                                <button class="add-btn" onclick="alert('Added to Bag')">Add to Bag</button>
+                                <button class="add-btn" onclick="alert('Item added to your bag.')">Add to Bag</button>
                             </div>
                         </div>
                     `).join('')}
                 </div>`,
-            contact: `<div class="content-wrapper"><h1>Contact Us</h1><p>We're here to help. Reach out via support@aurafashion.com or our NY office.</p></div>`,
-            terms: `<div class="content-wrapper"><h1>Terms of Service</h1><p>Standard retail terms apply. By purchasing, you agree to our service conditions.</p></div>`,
-            privacy: `<div class="content-wrapper"><h1>Privacy Policy</h1><p>We secure your data with SSL encryption and never share your details with third parties.</p></div>`,
-            cookie: `<div class="content-wrapper"><h1>Cookie Policy</h1><p>We use cookies to ensure you get the best experience on our website.</p></div>`,
-            refund: `<div class="content-wrapper"><h1>Refund Policy</h1><p>30-day returns accepted for all unworn items in original packaging.</p></div>`
+            contact: `<div class="content-wrapper"><h1>Contact Us</h1><p>Our concierge team is available Mon-Fri, 9am-5pm EST.</p><h2>Email</h2><p>support@aurafashion.com</p><h2>Location</h2><p>123 Fashion District, New York, NY 10001</p></div>`,
+            terms: `<div class="content-wrapper"><h1>Terms of Service</h1><h2>1. Agreement</h2><p>By using AURA, you agree to these legal terms.</p><h2>2. Liability</h2><p>AURA is not liable for indirect damages resulting from site use.</p></div>`,
+            privacy: `<div class="content-wrapper"><h1>Privacy Policy</h1><h2>Data Safety</h2><p>We use industry-standard encryption to protect your personal information.</p><h2>Cookies</h2><p>We use cookies to improve your shopping experience.</p></div>`,
+            cookie: `<div class="content-wrapper"><h1>Cookie Policy</h1><p>This site uses essential cookies to track your cart and security session. Analytical cookies help us improve site performance.</p></div>`,
+            refund: `<div class="content-wrapper"><h1>Refund Policy</h1><p>We offer a 30-day window for returns on all items. Items must be unworn with original tags attached.</p></div>`
         };
 
         function navigateTo(page) {
@@ -230,7 +231,6 @@
             document.getElementById('main-view').innerHTML = pages[page] || pages['home'];
         }
 
-        // Initialize Home
         navigateTo('home');
     </script>
 </body>
