@@ -53,50 +53,91 @@
             cursor: pointer;
         }
 
-        /* --- Dynamic Content Area --- */
-        #main-view { min-height: 80vh; }
+        /* --- Hero Section --- */
+        .hero { 
+            height: 70vh; 
+            display: flex; 
+            align-items: center; 
+            padding: 0 5%; 
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.2)), url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1500&q=80') center/cover; 
+            color: white; 
+        }
+        .hero-h { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; }
 
+        /* --- Product Grid --- */
+        .collection-header { text-align: center; padding: 80px 0 40px; }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 40px;
+            padding: 0 5% 100px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .product-card {
+            background: var(--white);
+            padding-bottom: 20px;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        .img-wrapper {
+            aspect-ratio: 3/4;
+            overflow: hidden;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover img { transform: scale(1.08); }
+
+        .product-info { padding: 0 15px; text-align: center; }
+        .product-info h3 { font-size: 1.1rem; margin-bottom: 5px; }
+        .price { color: var(--accent); font-weight: 600; font-size: 0.9rem; }
+
+        .add-btn {
+            width: 100%;
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px;
+            margin-top: 15px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-size: 0.7rem;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .add-btn:hover { background: var(--accent); }
+
+        /* --- Dynamic Page Wrapper --- */
         .content-wrapper {
             max-width: 800px;
             margin: 60px auto;
             padding: 0 5%;
-            animation: fadeIn 0.5s ease-in;
+            animation: fadeIn 0.5s ease;
         }
 
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        .content-wrapper h1 { font-size: 3rem; margin-bottom: 30px; border-bottom: 1px solid #ddd; padding-bottom: 20px; }
-        .content-wrapper h2 { margin-top: 30px; font-size: 1.5rem; }
-        .content-wrapper p, .content-wrapper li { color: #444; margin-bottom: 15px; font-size: 0.95rem; }
-
-        /* --- Contact Form --- */
-        .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 40px; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; font-size: 0.7rem; text-transform: uppercase; font-weight: bold; margin-bottom: 5px; }
-        input, textarea {
-            width: 100%; padding: 12px; border: 1px solid #ddd; background: transparent; font-family: inherit;
-        }
-        .submit-btn {
-            background: var(--primary); color: white; border: none; padding: 15px 40px; cursor: pointer;
-            text-transform: uppercase; letter-spacing: 1px; transition: 0.3s;
-        }
-        .submit-btn:hover { background: var(--accent); }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
         /* --- Footer --- */
-        footer { background: var(--primary); color: var(--white); padding: 80px 5% 40px; margin-top: 100px; }
+        footer { background: var(--primary); color: var(--white); padding: 80px 5% 40px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
         .footer-grid h4 { color: var(--accent); margin-bottom: 20px; text-transform: uppercase; font-size: 0.8rem; }
-        .footer-grid ul { list-style: none; }
-        .footer-grid a { color: #aaa; text-decoration: none; font-size: 0.8rem; transition: 0.3s; display: block; margin-bottom: 10px; cursor: pointer; }
+        .footer-grid a { color: #aaa; text-decoration: none; font-size: 0.8rem; display: block; margin-bottom: 10px; cursor: pointer; }
         .footer-grid a:hover { color: white; }
 
-        /* --- Shop Home (Visible by default) --- */
-        .hero { height: 70vh; display: flex; align-items: center; padding: 0 5%; background: url('https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?auto=format&fit=crop&w=1500&q=80') center/cover; color: white; }
-        .hero-h { font-size: 4rem; line-height: 1; }
-
         @media (max-width: 768px) {
-            .contact-grid { grid-template-columns: 1fr; }
             .hero-h { font-size: 2.5rem; }
+            nav { display: none; } /* Simplified for mobile */
         }
     </style>
 </head>
@@ -110,17 +151,8 @@
         </nav>
     </header>
 
-    <div id="main-view">
-        <div id="home-view">
-            <section class="hero">
-                <h1 class="hero-h">Essentials for<br><i>Modern Life.</i></h1>
-            </section>
-            <div style="text-align: center; padding: 100px 0;">
-                <h2>Spring '26 Collection</h2>
-                <p>Scroll to explore bespoke apparel.</p>
-                </div>
-        </div>
-    </div>
+    <main id="main-view">
+        </main>
 
     <footer>
         <div class="footer-grid">
@@ -133,7 +165,7 @@
                 </p>
             </div>
             <div>
-                <h4>Information</h4>
+                <h4>Policy</h4>
                 <ul>
                     <li><a onclick="navigateTo('terms')">Terms of Service</a></li>
                     <li><a onclick="navigateTo('privacy')">Privacy Policy</a></li>
@@ -141,81 +173,65 @@
                 </ul>
             </div>
             <div>
-                <h4>Customer Support</h4>
+                <h4>Support</h4>
                 <ul>
                     <li><a onclick="navigateTo('refund')">Refund Policy</a></li>
                     <li><a onclick="navigateTo('contact')">Get Help</a></li>
                 </ul>
             </div>
         </div>
-        <p style="margin-top: 50px; font-size: 0.7rem; color: #444;">&copy; 2026 AURA MODERN APPAREL. GOOGLE ADS COMPLIANT STORE.</p>
+        <p style="margin-top: 50px; font-size: 0.7rem; color: #444;">&copy; 2026 AURA MODERN APPAREL. AUTHENTIC QUALITY GUARANTEED.</p>
     </footer>
 
     <script>
+        const products = [
+            { id: 1, name: "Essential White Tee", price: 29.00, img: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=500&q=80" },
+            { id: 2, name: "Navy Knit Sweater", price: 59.00, img: "https://images.unsplash.com/photo-1556905055-8f358a7a4bb4?auto=format&fit=crop&w=500&q=80" },
+            { id: 3, name: "Classic Denim Jacket", price: 89.00, img: "https://images.unsplash.com/photo-1576871333019-220ea01e8f27?auto=format&fit=crop&w=500&q=80" },
+            { id: 4, name: "Modern Chino Pants", price: 45.00, img: "https://images.unsplash.com/photo-1473966968600-fa801b869a1a?auto=format&fit=crop&w=500&q=80" },
+            { id: 5, name: "Wool Blend Coat", price: 129.00, img: "https://images.unsplash.com/photo-1539533318441-601966636787?auto=format&fit=crop&w=500&q=80" },
+            { id: 6, name: "Urban Canvas Pack", price: 49.00, img: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&w=500&q=80" },
+            { id: 7, name: "Leather Chelsea Boots", price: 110.00, img: "https://images.unsplash.com/photo-1638247025967-b4e38f787b76?auto=format&fit=crop&w=500&q=80" },
+            { id: 8, name: "Minimalist Watch", price: 75.00, img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=500&q=80" }
+        ];
+
         const pages = {
-            contact: `
-                <div class="content-wrapper">
-                    <h1>Contact Us</h1>
-                    <div class="contact-grid">
-                        <div>
-                            <p><strong>Customer Service Hours:</strong><br>Mon - Fri: 9am - 6pm EST</p>
-                            <p><strong>Email:</strong><br>support@aurafashion.com</p>
-                            <p><strong>Address:</strong><br>123 Fashion District, New York, NY 10001</p>
+            home: `
+                <section class="hero">
+                    <h1 class="hero-h">Crafted for<br><i>Longevity.</i></h1>
+                </section>
+                <div class="collection-header">
+                    <h2>Our Essentials</h2>
+                    <p style="color: #888; font-size: 0.9rem;">Modern basics for a refined wardrobe.</p>
+                </div>
+                <div class="product-grid">
+                    ${products.map(p => `
+                        <div class="product-card">
+                            <div class="img-wrapper">
+                                <img src="${p.img}" alt="${p.name}">
+                            </div>
+                            <div class="product-info">
+                                <h3>${p.name}</h3>
+                                <span class="price">$${p.price.toFixed(2)}</span>
+                                <button class="add-btn" onclick="alert('Added to Bag')">Add to Bag</button>
+                            </div>
                         </div>
-                        <form onsubmit="event.preventDefault(); alert('Message Received. We will respond within 24 hours.')">
-                            <div class="form-group"><label>Name</label><input type="text" required></div>
-                            <div class="form-group"><label>Email</label><input type="email" required></div>
-                            <div class="form-group"><label>Message</label><textarea rows="4" required></textarea></div>
-                            <button class="submit-btn">Send Message</button>
-                        </form>
-                    </div>
+                    `).join('')}
                 </div>`,
-            terms: `
-                <div class="content-wrapper">
-                    <h1>Terms of Service</h1>
-                    <p>Welcome to AURA. By using our website, you agree to the following terms...</p>
-                    <h2>1. Use of Site</h2>
-                    <p>You may use our site for personal, non-commercial shopping purposes only.</p>
-                    <h2>2. Accuracy of Information</h2>
-                    <p>We attempt to be as accurate as possible with product descriptions; however, we do not warrant that product descriptions are error-free.</p>
-                    <h2>3. Pricing</h2>
-                    <p>All prices are subject to change without notice.</p>
-                </div>`,
-            cookie: `
-                <div class="content-wrapper">
-                    <h1>Cookie Policy</h1>
-                    <p>AURA uses cookies to improve your browsing experience and show you personalized content.</p>
-                    <h2>How we use cookies</h2>
-                    <p>We use essential cookies for site functionality and analytical cookies to understand how our visitors interact with the store.</p>
-                    <h2>Managing Cookies</h2>
-                    <p>You can disable cookies through your browser settings, though some features may stop working.</p>
-                </div>`,
-            privacy: `
-                <div class="content-wrapper">
-                    <h1>Privacy Policy</h1>
-                    <p>We value your privacy. Your data is encrypted and never sold to third parties.</p>
-                    <h2>Data Collection</h2>
-                    <p>We collect information such as your name, email, and shipping address to process orders.</p>
-                </div>`,
-            refund: `
-                <div class="content-wrapper">
-                    <h1>Refund Policy</h1>
-                    <p>We offer a <strong>30-day return policy</strong> for all unworn and unwashed items.</p>
-                    <h2>Process</h2>
-                    <p>To start a return, please contact us at returns@aurafashion.com with your order number.</p>
-                </div>`
+            contact: `<div class="content-wrapper"><h1>Contact Us</h1><p>We're here to help. Reach out via support@aurafashion.com or our NY office.</p></div>`,
+            terms: `<div class="content-wrapper"><h1>Terms of Service</h1><p>Standard retail terms apply. By purchasing, you agree to our service conditions.</p></div>`,
+            privacy: `<div class="content-wrapper"><h1>Privacy Policy</h1><p>We secure your data with SSL encryption and never share your details with third parties.</p></div>`,
+            cookie: `<div class="content-wrapper"><h1>Cookie Policy</h1><p>We use cookies to ensure you get the best experience on our website.</p></div>`,
+            refund: `<div class="content-wrapper"><h1>Refund Policy</h1><p>30-day returns accepted for all unworn items in original packaging.</p></div>`
         };
 
-        const homeHtml = document.getElementById('main-view').innerHTML;
-
         function navigateTo(page) {
-            window.scrollTo(0,0);
-            if(page === 'home') {
-                document.getElementById('main-view').innerHTML = homeHtml;
-            } else {
-                document.getElementById('main-view').innerHTML = pages[page] || '<h1>Page Not Found</h1>';
-            }
+            window.scrollTo(0, 0);
+            document.getElementById('main-view').innerHTML = pages[page] || pages['home'];
         }
+
+        // Initialize Home
+        navigateTo('home');
     </script>
 </body>
 </html>
