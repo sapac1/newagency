@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ja">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA | Bespoke Modern Apparel</title>
-    <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>AURA | プレミアム・モダン・アパレル</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #0f0f0f;
@@ -18,13 +18,14 @@
         html { scroll-behavior: smooth; }
 
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Noto Sans JP', sans-serif;
             background-color: var(--bg);
             color: var(--primary);
-            line-height: 1.7;
+            line-height: 1.8;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, .brand-font { font-family: 'Bodoni Moda', serif; font-weight: 400; }
+        h1, h2, h3, .brand-font { font-family: 'Noto Serif JP', serif; font-weight: 700; }
 
         /* --- Navigation --- */
         header {
@@ -40,29 +41,30 @@
             border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .logo { font-size: 2rem; text-decoration: none; color: var(--primary); letter-spacing: -1px; cursor: pointer; }
+        .logo { font-size: 1.8rem; text-decoration: none; color: var(--primary); letter-spacing: 2px; cursor: pointer; }
 
         nav a {
             text-decoration: none;
             color: var(--primary);
             margin-left: 30px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            font-size: 0.8rem;
+            font-weight: 700;
             cursor: pointer;
+            transition: var(--transition);
         }
+
+        nav a:hover { color: var(--accent); }
 
         /* --- Hero Section --- */
         .hero { 
-            height: 70vh; 
+            height: 75vh; 
             display: flex; 
             align-items: center; 
             padding: 0 5%; 
             background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://images.unsplash.com/photo-1445205170230-053b830c6039?auto=format&fit=crop&w=1500&q=80') center/cover; 
             color: white; 
         }
-        .hero-h { font-size: clamp(2.5rem, 6vw, 4.5rem); line-height: 1; }
+        .hero-h { font-size: clamp(2rem, 5vw, 3.5rem); line-height: 1.4; letter-spacing: 0.1em; }
 
         /* --- Product Grid --- */
         .collection-header { text-align: center; padding: 80px 0 40px; }
@@ -75,68 +77,40 @@
             margin: 0 auto;
         }
 
-        .product-card {
-            background: transparent;
-            position: relative;
-            transition: var(--transition);
-        }
-
-        .img-wrapper {
-            aspect-ratio: 3/4;
-            overflow: hidden;
-            margin-bottom: 20px;
-            background-color: #f0f0f0;
-        }
-
-        .img-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s ease;
-        }
-
+        .product-card { background: transparent; transition: var(--transition); }
+        .img-wrapper { aspect-ratio: 3/4; overflow: hidden; margin-bottom: 20px; background-color: #f0f0f0; }
+        .img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s ease; }
         .product-card:hover img { transform: scale(1.1); }
 
         .product-info { text-align: left; }
-        .product-info h3 { font-size: 1rem; margin-bottom: 5px; letter-spacing: 0.5px; }
-        .price { color: var(--accent); font-weight: 600; font-size: 0.9rem; display: block; margin-bottom: 10px; }
+        .product-info h3 { font-size: 0.95rem; margin-bottom: 5px; }
+        .price { color: var(--accent); font-weight: 700; font-size: 1rem; display: block; margin-bottom: 10px; }
 
         .add-btn {
-            width: 100%;
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 12px;
-            cursor: pointer;
-            text-transform: uppercase;
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            transition: 0.3s;
+            width: 100%; background: var(--primary); color: white; border: none; padding: 12px; cursor: pointer;
+            font-size: 0.75rem; font-weight: 700; transition: 0.3s;
         }
-
         .add-btn:hover { background: var(--accent); }
 
-        /* --- Content Wrapper (Policy/Contact Pages) --- */
-        .content-wrapper {
-            max-width: 850px;
-            margin: 60px auto;
-            padding: 0 5%;
-            animation: fadeIn 0.6s ease-out;
-        }
-        .content-wrapper h1 { font-size: 3rem; margin-bottom: 40px; }
-        .content-wrapper h2 { margin: 30px 0 15px; font-size: 1.4rem; color: var(--accent); }
+        /* --- Content Layout --- */
+        .content-wrapper { max-width: 900px; margin: 60px auto; padding: 0 5%; animation: fadeIn 0.6s ease-out; }
+        .content-wrapper h1 { font-size: 2.5rem; margin-bottom: 40px; border-bottom: 2px solid var(--primary); padding-bottom: 10px; }
+        .content-wrapper h2 { margin: 40px 0 15px; font-size: 1.3rem; color: var(--accent); border-left: 4px solid var(--accent); padding-left: 15px; }
+        .content-wrapper p { margin-bottom: 20px; color: #333; }
+        .content-wrapper ul { margin-bottom: 20px; padding-left: 20px; }
+        .content-wrapper li { margin-bottom: 10px; }
+
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- Footer --- */
         footer { background: var(--primary); color: var(--white); padding: 80px 5% 40px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; }
-        .footer-grid h4 { color: var(--accent); margin-bottom: 20px; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .footer-grid h4 { color: var(--accent); margin-bottom: 20px; font-size: 0.9rem; letter-spacing: 1px; }
         .footer-grid a { color: #888; text-decoration: none; font-size: 0.8rem; display: block; margin-bottom: 12px; cursor: pointer; transition: 0.3s; }
         .footer-grid a:hover { color: white; }
 
         @media (max-width: 768px) {
-            .hero-h { font-size: 2.8rem; }
-            .content-wrapper h1 { font-size: 2.2rem; }
+            .hero-h { font-size: 1.8rem; }
             nav { display: none; }
         }
     </style>
@@ -146,8 +120,8 @@
     <header>
         <div class="logo" onclick="navigateTo('home')">AURA.</div>
         <nav>
-            <a onclick="navigateTo('home')">Collection</a>
-            <a onclick="navigateTo('contact')">Contact</a>
+            <a onclick="navigateTo('home')">コレクション</a>
+            <a onclick="navigateTo('contact')">お問い合わせ</a>
         </nav>
     </header>
 
@@ -156,74 +130,137 @@
     <footer>
         <div class="footer-grid">
             <div>
-                <h4>Aura HQ</h4>
-                <p style="font-size: 0.8rem; color: #666; line-height: 1.8;">
-                    123 Fashion District, Suite 400<br>
-                    New York, NY 10001<br>
-                    support@aurafashion.com
+                <h4>AURA 日本支社</h4>
+                <p style="font-size: 0.8rem; color: #666; line-height: 2;">
+                    〒107-0062<br>
+                    東京都港区南青山 5-10-12<br>
+                    support.jp@aurafashion.com
                 </p>
             </div>
             <div>
-                <h4>Legal Info</h4>
+                <h4>リーガル情報</h4>
                 <ul>
-                    <li><a onclick="navigateTo('terms')">Terms of Service</a></li>
-                    <li><a onclick="navigateTo('privacy')">Privacy Policy</a></li>
-                    <li><a onclick="navigateTo('cookie')">Cookie Policy</a></li>
+                    <li><a onclick="navigateTo('terms')">利用規約</a></li>
+                    <li><a onclick="navigateTo('privacy')">プライバシーポリシー</a></li>
+                    <li><a onclick="navigateTo('cookie')">クッキーポリシー</a></li>
+                    <li><a onclick="navigateTo('tokushoho')">特定商取引法に基づく表記</a></li>
                 </ul>
             </div>
             <div>
-                <h4>Support</h4>
+                <h4>カスタマーサポート</h4>
                 <ul>
-                    <li><a onclick="navigateTo('refund')">Refund Policy</a></li>
-                    <li><a onclick="navigateTo('contact')">Contact Us</a></li>
+                    <li><a onclick="navigateTo('refund')">返品・返金について</a></li>
+                    <li><a onclick="navigateTo('contact')">お問い合わせフォーム</a></li>
                 </ul>
             </div>
         </div>
         <p style="margin-top: 60px; font-size: 0.7rem; color: #444; border-top: 1px solid #222; padding-top: 20px;">
-            &copy; 2026 AURA MODERN APPAREL. TRUSTED BY GOOGLE ADS COMPLIANCE STANDARDS.
+            &copy; 2026 AURA MODERN APPAREL. すべての法的要件に準拠しています。
         </p>
     </footer>
 
     <script>
         const products = [
-            { id: 1, name: "Silk Blend Blouse", price: 115.00, img: "https://images.unsplash.com/photo-1534126416832-a88fdf2911c2?auto=format&fit=crop&w=600&q=80" },
-            { id: 2, name: "Oversized Cashmere Polo", price: 195.00, img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80" },
-            { id: 3, name: "Tailored Linen Trousers", price: 145.00, img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=600&q=80" },
-            { id: 4, name: "Ribbed Wool Vest", price: 85.00, img: "https://images.unsplash.com/photo-1624373914860-3f7a43588a64?auto=format&fit=crop&w=600&q=80" },
-            { id: 5, name: "Brushed Cotton Overcoat", price: 340.00, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80" },
-            { id: 6, name: "Raw Leather Satchel", price: 210.00, img: "https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=600&q=80" },
-            { id: 7, name: "Minimalist Knit Dress", price: 160.00, img: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80" },
-            { id: 8, name: "Brushed Suede Loafers", price: 225.00, img: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=600&q=80" }
+            { id: 1, name: "シルクブレンド ブラウス", price: 15800, img: "https://images.unsplash.com/photo-1534126416832-a88fdf2911c2?auto=format&fit=crop&w=600&q=80" },
+            { id: 2, name: "カシミヤ ポロセーター", price: 24500, img: "https://images.unsplash.com/photo-1594938298603-c8148c4dae35?auto=format&fit=crop&w=600&q=80" },
+            { id: 3, name: "リネン テーパードパンツ", price: 18900, img: "https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=600&q=80" },
+            { id: 4, name: "ウール リブベスト", price: 12000, img: "https://images.unsplash.com/photo-1624373914860-3f7a43588a64?auto=format&fit=crop&w=600&q=80" },
+            { id: 5, name: "コットン オーバーコート", price: 48000, img: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=600&q=80" },
+            { id: 6, name: "レザー サッチェルバッグ", price: 32000, img: "https://images.unsplash.com/photo-1547949003-9792a18a2601?auto=format&fit=crop&w=600&q=80" },
+            { id: 7, name: "ニット マキシドレス", price: 21000, img: "https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?auto=format&fit=crop&w=600&q=80" },
+            { id: 8, name: "スエード ローファー", price: 29800, img: "https://images.unsplash.com/photo-1614252235316-8c857d38b5f4?auto=format&fit=crop&w=600&q=80" }
         ];
 
         const pages = {
             home: `
                 <section class="hero">
-                    <h1 class="hero-h">Designed for<br><i>The Individual.</i></h1>
+                    <h1 class="hero-h">時代に流されない、<br><i>自分らしさを。</i></h1>
                 </section>
                 <div class="collection-header">
-                    <h2>Current Collection</h2>
-                    <p style="color: #888; font-size: 0.9rem;">Refined silhouettes for the modern wardrobe.</p>
+                    <h2>最新コレクション</h2>
+                    <p style="color: #888; font-size: 0.9rem;">洗練されたシルエットと上質な素材の融合</p>
                 </div>
                 <div class="product-grid">
                     ${products.map(p => `
                         <div class="product-card">
-                            <div class="img-wrapper">
-                                <img src="${p.img}" alt="${p.name}">
-                            </div>
+                            <div class="img-wrapper"><img src="${p.img}" alt="${p.name}"></div>
                             <div class="product-info">
                                 <h3>${p.name}</h3>
-                                <span class="price">$${p.price.toFixed(2)}</span>
-                                <button class="add-btn" onclick="alert('Item added to your bag.')">Add to Bag</button>
+                                <span class="price">¥${p.price.toLocaleString()}</span>
+                                <button class="add-btn" onclick="alert('カートに追加されました')">カートに追加</button>
                             </div>
                         </div>
                     `).join('')}
                 </div>`,
-            contact: `<div class="content-wrapper"><h1>Contact Us</h1><p>Our concierge team is available Mon-Fri, 9am-5pm EST.</p><h2>Email</h2><p>support@aurafashion.com</p><h2>Location</h2><p>123 Fashion District, New York, NY 10001</p></div>`,
-            terms: `<div class="content-wrapper"><h1>Terms of Service</h1><h2>1. Agreement</h2><p>By using AURA, you agree to these legal terms.</p><h2>2. Liability</h2><p>AURA is not liable for indirect damages resulting from site use.</p></div>`,
-            privacy: `<div class="content-wrapper"><h1>Privacy Policy</h1><h2>Data Safety</h2><p>We use industry-standard encryption to protect your personal information.</p><h2>Cookies</h2><p>We use cookies to improve your shopping experience.</p></div>`,
-            cookie: `<div class="content-wrapper"><h1>Cookie Policy</h1><p>This site uses essential cookies to track your cart and security session. Analytical cookies help us improve site performance.</p></div>`,
-            refund: `<div class="content-wrapper"><h1>Refund Policy</h1><p>We offer a 30-day window for returns on all items. Items must be unworn with original tags attached.</p></div>`
+            contact: `
+                <div class="content-wrapper">
+                    <h1>お問い合わせ</h1>
+                    <p>商品や配送に関するご質問は、以下のフォームまたはメールにて承っております。</p>
+                    <h2>メールでのお問い合わせ</h2>
+                    <p>support.jp@aurafashion.com</p>
+                    <p>※通常、24時間以内（土日祝日を除く）にご返信いたします。</p>
+                    <h2>ショールーム所在地</h2>
+                    <p>東京都港区南青山 5-10-12 AURA青山ビル 4F</p>
+                </div>`,
+            cookie: `
+                <div class="content-wrapper">
+                    <h1>クッキーポリシー</h1>
+                    <p>AURA（以下「当社」）は、お客様のウェブサイト利用体験を向上させるためにクッキー（Cookie）を使用しています。</p>
+                    <h2>1. クッキーとは</h2>
+                    <p>クッキーとは、ウェブサイトを訪問した際にお客様のブラウザに保存される小さなテキストファイルです。これにより、カートの内容の保持やログイン情報の記憶が可能になります。</p>
+                    <h2>2. 使用するクッキーの種類</h2>
+                    <ul>
+                        <li><strong>必須クッキー:</strong> サイトの基本機能（決済、セキュリティ）に不可欠なものです。</li>
+                        <li><strong>分析クッキー:</strong> 訪問者数や人気のページを把握し、サービス改善に役立てます。</li>
+                        <li><strong>広告クッキー:</strong> お客様の関心に基づいた適切な広告を表示するために使用します。</li>
+                    </ul>
+                    <h2>3. クッキーの管理</h2>
+                    <p>お客様はブラウザの設定により、クッキーを拒否したり削除したりすることができます。ただし、その場合、サイトの一部機能が制限される場合があります。</p>
+                </div>`,
+            terms: `
+                <div class="content-wrapper">
+                    <h1>利用規約</h1>
+                    <h2>第1条（適用）</h2>
+                    <p>本規約は、お客様と当社との間の本サービスの利用に関わる一切の関係に適用されるものとします。</p>
+                    <h2>第2条（禁止事項）</h2>
+                    <p>利用にあたり、以下の行為を禁止します：不正アクセス、他者へのなりすまし、公序良俗に反する行為。</p>
+                    <h2>第3条（サービスの停止）</h2>
+                    <p>保守点検や天災などの場合、予告なくサービスを停止することがあります。</p>
+                </div>`,
+            privacy: `
+                <div class="content-wrapper">
+                    <h1>プライバシーポリシー</h1>
+                    <p>当社は、お客様の個人情報を適切に保護することを社会的責務と考え、厳重に管理いたします。</p>
+                    <h2>情報の収集方法</h2>
+                    <p>注文時の氏名、住所、メールアドレス、支払情報を適切に収集します。</p>
+                    <h2>利用目的</h2>
+                    <p>商品の発送、カスタマーサポート、および新製品情報の提供にのみ利用いたします。</p>
+                    <h2>第三者への提供</h2>
+                    <p>法令に基づく場合を除き、同意なく第三者に個人情報を提供することはありません。</p>
+                </div>`,
+            refund: `
+                <div class="content-wrapper">
+                    <h1>返品・返金ポリシー</h1>
+                    <p>AURAでは、お客様にご満足いただけるよう、30日間の返品保証を設けております。</p>
+                    <h2>返品の条件</h2>
+                    <ul>
+                        <li>商品到着後30日以内であること。</li>
+                        <li>未使用、未洗濯でタグが付いた状態であること。</li>
+                        <li>セール品でないこと。</li>
+                    </ul>
+                    <h2>返金方法</h2>
+                    <p>返品商品の確認後、5営業日以内に元の支払い方法を通じて返金処理を行います。</p>
+                </div>`,
+            tokushoho: `
+                <div class="content-wrapper">
+                    <h1>特定商取引法に基づく表記</h1>
+                    <h2>販売業者</h2><p>AURA Modern Apparel 株式会社</p>
+                    <h2>運営責任者</h2><p>山田 太郎</p>
+                    <h2>郵便番号</h2><p>107-0062</p>
+                    <h2>所在地</h2><p>東京都港区南青山 5-10-12</p>
+                    <h2>電話番号</h2><p>03-xxxx-xxxx（受付時間：平日10:00〜17:00）</p>
+                    <h2>商品代金以外の必要料金</h2><p>消費税、送料（全国一律800円。3万円以上のご購入で無料）</p>
+                </div>`
         };
 
         function navigateTo(page) {
